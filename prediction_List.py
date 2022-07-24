@@ -1,15 +1,15 @@
 from asyncio.windows_events import NULL
 from types import NoneType
 
-def entry_Create(ID, first_Name, last_Name, address, prediction, db, conn):
+def entry_Create(ID, first_Name, last_Name, address, contact_Num, prediction, db, conn):
     db.execute("SELECT FirstName FROM PREDICTION WHERE FirstName=:first_Name AND LastName=:last_Name", 
         {'first_Name': first_Name, 'last_Name': last_Name})
     conn.commit()
 
     if (type(db.fetchone()) == NoneType):
         log_Message = "New entry created"
-        db.execute("INSERT INTO PREDICTION(ID, FirstName, LastName, Address, Prediction) VALUES (:ID, :first_Name, :last_Name, :address, :prediction)", 
-            {'ID': ID, 'first_Name': first_Name, "last_Name": last_Name, "address": address, "prediction": prediction})
+        db.execute("INSERT INTO PREDICTION(ID, FirstName, LastName, Address, ContactNum, Prediction) VALUES (:ID, :first_Name, :last_Name, :address, :prediction, :contact_Num)", 
+            {'ID': ID, 'first_Name': first_Name, "last_Name": last_Name, "address": address, "prediction": prediction, "contact_Num": contact_Num})
         conn.commit()
     
     else:
@@ -36,7 +36,7 @@ def entry_CheckList(db):
     prediction_List = db.fetchall()
     return prediction_List
 
-def entry_Edit(first_Name_Old, last_Name_Old, first_Name, last_Name, address, prediction, db):
+def entry_Edit(first_Name_Old, last_Name_Old, first_Name, last_Name, contact_Num, address, prediction, db):
     db.execute("SELECT FirstName FROM PREDICTION WHERE FirstName=:first_Name_Old AND LastName=:last_Name_Old", 
         {'first_Name_Old': first_Name_Old, 'last_Name_Old': last_Name_Old})
     
@@ -44,8 +44,8 @@ def entry_Edit(first_Name_Old, last_Name_Old, first_Name, last_Name, address, pr
         log_Message = "Entry does not exist"
     
     else:
-        db.execute("UPDATE PREDICTION set FirstName=:first_Name, LastName=:last_Name, Address=:address, Prediction=:prediction WHERE FirstName=:first_Name_Old AND LastName=:last_Name_Old", 
-            {'first_Name': first_Name, "last_Name": last_Name, "address": address, "prediction": prediction, "first_Name_Old": first_Name_Old, "last_Name_Old": last_Name_Old})
+        db.execute("UPDATE PREDICTION set FirstName=:first_Name, LastName=:last_Name, Address=:address, Prediction=:prediction, ContactNum=:contact_Num WHERE FirstName=:first_Name_Old AND LastName=:last_Name_Old", 
+            {'first_Name': first_Name, "last_Name": last_Name, "address": address, "prediction": prediction, "contact_Num": contact_Num, "first_Name_Old": first_Name_Old, "last_Name_Old": last_Name_Old})
 
         log_Message = "Entry successfully edited"
     return log_Message

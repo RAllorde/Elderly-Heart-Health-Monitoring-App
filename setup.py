@@ -12,7 +12,7 @@ def user_TableCreate(db):
     return NULL
 
 def prediction_TableCreate(db):
-    db.execute("CREATE TABLE IF NOT EXISTS PREDICTION(ID INT, FirstName char, LastName char, Address char, Prediction char)")
+    db.execute("CREATE TABLE IF NOT EXISTS PREDICTION(ID INT, FirstName char, LastName char, Address char, ContactNum char, Prediction char)")
     return NULL
 
 if __name__ == '__main__':
