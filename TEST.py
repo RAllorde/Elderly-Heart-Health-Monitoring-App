@@ -1,11 +1,11 @@
 from setuptools import setup
 import user_List
 import prediction_List
-import setup
+import Main
 
-if __name__ == '__main__':
+def test():
     check = 0
-    db, conn = setup.db_create()
+    db, conn = Main.db_create()
     test1 = user_List.user_Create(1, "Ronald", "rrca", db, conn)
     test2 = user_List.user_Login("Ronald", "rrca", db)
     test3 = user_List.user_EditUsername("Ronald", "Drae", db)
