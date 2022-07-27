@@ -1,11 +1,11 @@
 from setuptools import setup
 import user_List
 import prediction_List
-import Main
+import Initialize
 
 def test():
     check = 0
-    db, conn = Main.db_create()
+    db, conn = Initialize.db_create()
     test1 = user_List.user_Create(1, "Ronald", "rrca", db, conn)
     test2 = user_List.user_Login("Ronald", "rrca", db)
     test3 = user_List.user_EditUsername("Ronald", "Drae", db)
@@ -20,7 +20,7 @@ def test():
     if (test1 == "New user created" or test1 == "Username is already taken"):
         check = check + 1
 
-    if (test2 == "User does not exist" or test2 == "Logged in successfully" or test2 == "Incorrect username or password"):
+    if (test2 == "Username does not exist" or test2 == "Logged in successfully" or test2 == "Incorrect password"):
         check = check + 1
 
     if (test3 == "User does not exist" or test3 == "Username changed"):

@@ -22,7 +22,7 @@ def user_Login(username, password, db):
         {'Username': username})
     
     if (type(db.fetchone()) == NoneType):
-        log_Message = "User does not exist"
+        log_Message = "Username does not exist"
 
     else:
         db.execute("SELECT * FROM USER WHERE Username=:Username", 
@@ -30,7 +30,7 @@ def user_Login(username, password, db):
         if (db.fetchone()[2] == password):
             log_Message = "Logged in successfully"
         else:
-            log_Message = "Incorrect username or password"
+            log_Message = "Incorrect password"
 
     return log_Message
 
