@@ -1,15 +1,15 @@
 from asyncio.windows_events import NULL
 from types import NoneType
 
-def user_Create(ID, username, password, db, conn):
+def user_Create(username, password, db, conn):
     db.execute("SELECT Username FROM USER WHERE Username=:Username", 
         {'Username': username})
     conn.commit()
 
     if (type(db.fetchone()) == NoneType):
         log_Message = "New user created"
-        db.execute("INSERT INTO USER(ID, Username, Password) VALUES (:ID, :Username, :Password)", 
-            {'ID': ID, 'Username': username, "Password": password})
+        db.execute("INSERT INTO USER(Username, Password) VALUES (:Username, :Password)", 
+            {'Username': username, "Password": password})
         conn.commit()
     
     else:
@@ -27,7 +27,7 @@ def user_Login(username, password, db):
     else:
         db.execute("SELECT * FROM USER WHERE Username=:Username", 
         {'Username': username})
-        if (db.fetchone()[2] == password):
+        if (db.fetchone()[1] == password):
             log_Message = "Logged in successfully"
         else:
             log_Message = "Incorrect password"
