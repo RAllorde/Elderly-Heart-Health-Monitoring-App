@@ -114,7 +114,6 @@ class LoginPage(tk.Frame):
 
 
         #============================================BUTTONS===================================================#
-        # Predict
         self.btnLogin = Button(ButtonFrame, font=('tahoma',16,'bold'), text = "Login", bd=2, width=10, height=2, command = Login).grid(row=0, column=0, padx=1)
         self.btnSignup = Button(ButtonFrame, font=('tahoma',16,'bold'), text = "Signup", bd=2, width=10, height=2, command = lambda : controller.show_frame(Signup)).grid(row=0, column=1, padx=1)
 
@@ -189,7 +188,7 @@ class Signup(tk.Frame):
         self.btnCancel = Button(ButtonFrame_signup, font=('tahoma',16,'bold'), text = "Cancel", bd=2, width=10, height=2, command = Cancel).grid(row=0, column=1, padx=1)
 
 #============================================================================================================================================================================================================#
-# second window frame page1
+# second window frame mainmenu
 class MainMenu(tk.Frame):
      
     def __init__(self, parent, controller):
