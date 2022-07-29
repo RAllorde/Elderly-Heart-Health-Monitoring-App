@@ -24,7 +24,6 @@ class tkinterApp(tk.Tk):
         # creating a container
         container = tk.Frame(self) 
         container.pack(side = "top", fill = "both", expand = True)
-  
         container.grid_rowconfigure(0, weight = 1)
         container.grid_columnconfigure(0, weight = 1)
   
@@ -186,7 +185,6 @@ class Signup(tk.Frame):
             controller.show_frame(LoginPage)
 
         #============================================BUTTONS===================================================#
-        # Predict
         self.btnCreate = Button(ButtonFrame_signup, font=('tahoma',16,'bold'), text = "Create", bd=2, width=10, height=2,command = Create).grid(row=0, column=0, padx=1)
         self.btnCancel = Button(ButtonFrame_signup, font=('tahoma',16,'bold'), text = "Cancel", bd=2, width=10, height=2, command = Cancel).grid(row=0, column=1, padx=1)
 
@@ -205,8 +203,12 @@ class MainMenu(tk.Frame):
         self.lblmainMenu = Label(mainMenu_TitleFrame, font=('Tahoma',30, 'bold'), text = "Main Menu", bd=10, fg="white", bg="#047857", padx=40, pady=0)
         self.lblmainMenu.grid(row = 0, column = 0)
 
+        #============================================BUTTONS===================================================#
+        def exit():
+            controller.destroy()
+
         button_image_1 = PhotoImage(
-            file='assets/button_1.png')
+            file='button_1.png')
         self.button_1 = Button(mainMenu_ButtonFrame,
             image=button_image_1,
             command=lambda: print("button_1 clicked"),
@@ -217,7 +219,7 @@ class MainMenu(tk.Frame):
         self.button_1.grid(row = 0, column = 0, padx=10, pady=10)
 
         button_image_2 = PhotoImage(
-            file='assets/button_2.png')
+            file='button_2.png')
         self.button_2 = Button(mainMenu_ButtonFrame,
             image=button_image_2,
             command=lambda: print("button_2 clicked"),
@@ -228,10 +230,10 @@ class MainMenu(tk.Frame):
         self.button_2.grid(row = 1, column = 0, padx=10, pady=10)
 
         button_image_3 = PhotoImage(
-            file='assets/button_3.png')
+            file='button_3.png')
         self.button_3 = Button(mainMenu_ButtonFrame,
             image=button_image_3,
-            command=lambda: print("button_3 clicked"),
+            command=exit,
             padx=2000,
             pady=2000
         )
