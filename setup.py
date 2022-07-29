@@ -1,8 +1,25 @@
 import os
 
 if __name__ == '__main__':
+    path = os.getcwd()
+    mainPATH = '"' + path + '\\MAIN.py"'
+    userPATH = '"' + path + '\\user_List.py;."'
+    predictionPATH = '"' + path + '\\prediction_List.py;."'
+    initializePATH = '"' + path + '\\Initialize.py;."'
+    imagePATH1 = '"' + path + '\\assets\\button_1.png;."'
+    imagePATH2 = '"' + path + '\\assets\\button_2.png;."'
+    imagePATH3 = '"' + path + '\\assets\\button_3.png;."'
+
+    mainPATH = mainPATH.replace("\\", "/")
+    userPATH = userPATH.replace("\\", "/")
+    predictionPATH = predictionPATH.replace("\\", "/")
+    initializePATH = initializePATH.replace("\\", "/")
+    imagePATH1 = imagePATH1.replace("\\", "/")
+    imagePATH2 = imagePATH2.replace("\\", "/")
+    imagePATH3 = imagePATH3.replace("\\", "/")
+
     os.system("pip install pysqlite3")
     os.system("pip install requests")
     os.system("pip install pyinstaller")
     os.system("pip install sklearn")
-    os.system('pyinstaller --noconfirm --onefile --windowed --add-data "E:/Desktop/SCHOOL/CPE126/SERVICE LEARNING/CODE/Initialize.py;." --add-data "E:/Desktop/SCHOOL/CPE126/SERVICE LEARNING/CODE/prediction_List.py;." --add-data "E:/Desktop/SCHOOL/CPE126/SERVICE LEARNING/CODE/setup.py;." --add-data "E:/Desktop/SCHOOL/CPE126/SERVICE LEARNING/CODE/user_List.py;."  "E:/Desktop/SCHOOL/CPE126/SERVICE LEARNING/CODE/MAIN.py"')
+    os.system('pyinstaller --noconfirm --onedir --windowed --add-data ' + imagePATH1 + ' --add-data ' + imagePATH2 + ' --add-data ' + imagePATH3 + ' --add-data ' + initializePATH + ' --add-data ' + predictionPATH + ' --add-data ' + userPATH + ' ' +  mainPATH)
