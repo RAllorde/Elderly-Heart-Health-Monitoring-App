@@ -22,4 +22,5 @@ if __name__ == '__main__':
     os.system("pip install requests")
     os.system("pip install pyinstaller")
     os.system("pip install sklearn")
+    os.system("pip install Pillow")
     os.system('pyinstaller --noconfirm --onedir --windowed --add-data ' + imagePATH1 + ' --add-data ' + imagePATH2 + ' --add-data ' + imagePATH3 + ' --add-data ' + initializePATH + ' --add-data ' + predictionPATH + ' --add-data ' + userPATH + ' ' +  mainPATH)
