@@ -21,4 +21,4 @@ if __name__ == '__main__':
     os.system("pip install pyinstaller")
     os.system("pip install sklearn")
     os.system("pip install Pillow")
-    os.system('pyinstaller --noconfirm --onedir --windowed --icon ' + iconPATH + ' --add-data ' + imagePATH + ' --add-data ' + initializePATH + ' --add-data ' + predictionPATH + ' --add-data ' + userPATH + ' ' +  mainPATH)
+    os.system('pyinstaller --noconfirm --onedir --windowed --icon ' + iconPATH + ' --name "Elderly Heart Health Monitoring App" --add-data ' + imagePATH + ' --add-data ' + initializePATH + ' --add-data ' + predictionPATH + ' --add-data ' + userPATH + ' ' +  mainPATH)
