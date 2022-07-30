@@ -17,7 +17,7 @@ def entry_Create(first_Name, last_Name, address, contact_Num, prediction, db, co
 
     return log_Message
 
-def entry_Delete(first_Name, last_Name, db):
+def entry_Delete(first_Name, last_Name, db, conn):
     db.execute("SELECT FirstName FROM PREDICTION WHERE FirstName=:first_Name AND LastName=:last_Name", 
         {'first_Name': first_Name, 'last_Name': last_Name})
     
@@ -28,7 +28,7 @@ def entry_Delete(first_Name, last_Name, db):
         db.execute("DELETE FROM PREDICTION WHERE FirstName=:first_Name AND LastName=:last_Name", 
         {'first_Name': first_Name, 'last_Name': last_Name})
         log_Message = "Entry successfully deleted"
-
+    conn.commit()
     return log_Message
 
 def entry_CheckList(db):
@@ -36,7 +36,7 @@ def entry_CheckList(db):
     prediction_List = db.fetchall()
     return prediction_List
 
-def entry_Edit(first_Name_Old, last_Name_Old, first_Name, last_Name, contact_Num, address, prediction, db):
+def entry_Edit(first_Name_Old, last_Name_Old, first_Name, last_Name, contact_Num, address, prediction, db, conn):
     db.execute("SELECT FirstName FROM PREDICTION WHERE FirstName=:first_Name_Old AND LastName=:last_Name_Old", 
         {'first_Name_Old': first_Name_Old, 'last_Name_Old': last_Name_Old})
     
@@ -48,4 +48,6 @@ def entry_Edit(first_Name_Old, last_Name_Old, first_Name, last_Name, contact_Num
             {'first_Name': first_Name, "last_Name": last_Name, "address": address, "prediction": prediction, "contact_Num": contact_Num, "first_Name_Old": first_Name_Old, "last_Name_Old": last_Name_Old})
 
         log_Message = "Entry successfully edited"
+
+    conn.commit()
     return log_Message
