@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from types import NoneType
 
 def entry_Create(first_Name, last_Name, address, contact_Num, prediction, db, conn):

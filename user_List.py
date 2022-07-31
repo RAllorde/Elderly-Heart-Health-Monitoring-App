@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from types import NoneType
 
 def user_Create(username, password, db, conn):
