@@ -827,6 +827,13 @@ class CreateEntry(tk.Frame):
 
             Label(canvas, text="Dataset:\nHeart Attack Analysis &\nPrediction Dataset\n By: RASHIK RAHMAN", fg = "#FFFFFF", bg = "#3A4132", font=("Manrope Bold", 14 * -1)).place(x=565.0, y=720.0)
 
+            lastname = lnEntry.get()
+            firstname = fnEntry.get()
+            address = addressEntry.get()
+            number = numberEntry.get()
+
+            prediction_List.entry_Create(firstname, lastname, address, number, db, conn)
+
         def back2mainmenu():
             self.grid_remove()
             controller.show_frame(MainMenu)
