@@ -78,7 +78,7 @@ class LoginPage(tk.Frame):
         BGFrame.grid(row = 1, column = 0)
 
         #Title Label
-        img2 = Image.open("images/lower_login_bg.png")
+        img2 = Image.open("images/lower_login_bg.PNG")
         resized2 = img2.resize((535,200), Image.ANTIALIAS)
         self.lower_login_img = ImageTk.PhotoImage(resized2)
         self.lower_login_bg = Label(BGFrame, image=self.lower_login_img, bg="#3A4132", bd=0)
@@ -557,15 +557,15 @@ class CreateEntry(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        mainframe = Frame(self)
-        mainframe.grid()
-
         OUTPUT_PATH = Path(__file__).parent
         ASSETS_PATH = OUTPUT_PATH / Path("./images/assets")
 
 
         def relative_to_assets(path: str) -> Path:
-            return ASSETS_PATH / Path(path)
+            return ASSETS_PATH / Path(path)        
+
+        mainframe = Frame(self)
+        mainframe.grid()
 
         # Canvas
         canvas = Canvas( mainframe, bg = "#CFCFBC", height = 850, width = 800, bd = 0, highlightthickness = 0, relief = "ridge" ) 
@@ -574,30 +574,30 @@ class CreateEntry(tk.Frame):
 
         # Right Frame
         canvas.create_rectangle( 525.0, 170.0, 773.0, 813.0, fill="#3A4132", outline="")
-        canvas.create_text( 549.0, 303.0, anchor="nw", text="Analysis:", fill="#FFFFFF", font=("Manrope Bold", 14 * -1) ) 
-        Label(canvas, text="                    Summary\nFirst Name: \n\nLast Name: \n\nAddress \n\nContact Number \n\nPredction", fg = "#FFFFFF", bg = "#3A4132", justify = 'left', font=("Manrope Bold", 14 * -1)).place(x=549.0, y=370.0)
+        canvas.create_text( 549.0, 303.0, anchor="nw", text="Analysis:", fill="#FFFFFF", font=("Arial Bold", 14 * -1) ) 
+        Label(canvas, text="                    Summary\nFirst Name: \n\n\nLast Name: \n\n\nAddress \n\n\nContact Number \n\n\nPredction", fg = "#FFFFFF", bg = "#3A4132", justify = 'left', font=("Arial Bold", 14 * -1)).place(x=549.0, y=370.0)
+        Label(canvas, text="Dataset:\nHeart Attack Analysis &\nPrediction Dataset\n By: RASHIK RAHMAN", fg = "#FFFFFF", bg = "#3A4132", font=("Arial Bold", 14 * -1)).place(x=565.0, y=720.0)
 
 
         # Title
         canvas.create_rectangle(0.0,0.0,882.0,56.0,fill="#3A4132",outline="")
-        canvas.create_text( 19.0, 81.0, anchor="nw", text="Elderly Heart Health Monitoring Application", fill="#000000", font=("Manrope Bold", 33 * -1) ) 
-        canvas.create_text( 19.0, 124.0, anchor="nw", text="Allorde - Del Rosario - Valeriano", fill="#000000", font=("Manrope Regular", 20 * -1) )
+        canvas.create_text( 19.0, 81.0, anchor="nw", text="Elderly Heart Health Monitoring Application", fill="#000000", font=("Arial Bold", 33 * -1) ) 
+        canvas.create_text( 19.0, 124.0, anchor="nw", text="Allorde - Del Rosario - Valeriano", fill="#000000", font=("Arial Regular", 20 * -1) )
 
 
-        # image
-        # heart1Image = PhotoImage(file=relative_to_assets("heart1.png"))
-        # heart1 = canvas.create_image(638.0,240.0,image=heart1Image)
-
+        # Image
+        heart1Image = PhotoImage(file="images/heart1.png")
+        heart1 = canvas.create_image(638.0,240.0,image=heart1Image)
 
         # Age
-        canvas.create_text(22.0,164.0,anchor="nw",text="Age",fill="#000000",font=("Manrope Bold", 14 * -1))
-        # ageImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
-        # ageBg = canvas.create_image(111.0,199.5,image=ageImage)
-        ageEntry = Entry(mainframe, bd=0,bg="#FFFFFF",highlightthickness=0)
-        ageEntry.place(x=22.0,y=187.0,width=178.0,height=23.0)
+        canvas.create_text(22.0,164.0,anchor="nw",text="Age",fill="#000000",font=("Arial Bold", 14 * -1))
+        ageImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
+        canvas.create_image(117.0,199.5,image=ageImage)
+        ageEntry = Entry(mainframe,bd=0,bg="#FFFFFF",highlightthickness=0)
+        ageEntry.place(x=27.0,y=187.0,width=178.0,height=23.0)
 
         # Sex
-        canvas.create_text(22.0,226.0,anchor="nw",text="Sex",fill="#000000",font=("Manrope Bold", 14 * -1))
+        canvas.create_text(22.0,226.0,anchor="nw",text="Sex",fill="#000000",font=("Arial Bold", 14 * -1))
         sexVar = StringVar(mainframe)
         sexVar.set("Select Option")
         sexOM = OptionMenu(mainframe, sexVar,"Male","Female")
@@ -605,7 +605,7 @@ class CreateEntry(tk.Frame):
         sexOM.place(x=22.0,y=250.0,width=185.0,height=38.0)
 
         # Chest Pain Type
-        canvas.create_text(22.0,295.0,anchor="nw",text="Chest Pain Type",fill="#000000",font=("Manrope Bold", 14 * -1))
+        canvas.create_text(22.0,295.0,anchor="nw",text="Chest Pain Type",fill="#000000",font=("ArialBold", 14 * -1))
         cpVar = StringVar(mainframe)
         cpVar.set("Select Option")
         cpOM = OptionMenu(mainframe, cpVar,"typical angina","atypical angina","non-anginal pain","asymptomatic")
@@ -613,46 +613,47 @@ class CreateEntry(tk.Frame):
         cpOM.place(x=22.0,y=320.0,width=185.0,height=38.0)
 
         # Resting Blood Pressure
-        canvas.create_text(22.0,368.0,anchor="nw",text="Resting Blood Pressure",fill="#000000",font=("Manrope Bold", 14 * -1))
-        # trtbpsImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
-        # trtbpsBg = canvas.create_image(111.0,403.0,image=trtbpsImage)
+        canvas.create_text(22.0,368.0,anchor="nw",text="Resting Blood Pressure",fill="#000000",font=("Arial Bold", 14 * -1))
+        trtbpsImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
+        trtbpsBg = canvas.create_image(111.0,403.0,image=trtbpsImage)
         trtbpsEntry = Entry(mainframe, bd=0,bg="#FFFFFF",highlightthickness=0)
-        trtbpsEntry.place(x=22.0,y=391.0,width=178.0,height=23.0)
+        trtbpsEntry.place(x=27.0,y=391.0,width=178.0,height=23.0)
 
 
         # Cholesterol in mg/dl
-        canvas.create_text( 22.0, 425.0, anchor="nw", text="Cholesterol in mg/dl", fill="#000000", font=("Manrope Bold", 14 * -1) ) 
-        # cholImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
-        # cholBg = canvas.create_image(111.0,461.5,image=cholImage)
+        canvas.create_text( 22.0, 425.0, anchor="nw", text="Cholesterol in mg/dl", fill="#000000", font=("Arial Bold", 14 * -1) ) 
+        cholImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
+        cholBg = canvas.create_image(111.0,461.5,image=cholImage)
         cholEntry = Entry(mainframe, bd=0,bg="#FFFFFF",highlightthickness=0)
-        cholEntry.place(x=22.0,y=449.0,width=180.0,height=23.0)
+        cholEntry.place(x=27.0,y=449.0,width=180.0,height=23.0)
 
 
         # Fasting Blood Sugar
-        canvas.create_text(22.0,482.0,anchor="nw",text="Fasting Blood Sugar",fill="#000000",font=("Manrope Bold", 14 * -1))
+        canvas.create_text(22.0,482.0,anchor="nw",text="Fasting Blood Sugar",fill="#000000",font=("Arial Bold", 14 * -1))
         fbsVar = StringVar(mainframe)
         fbsVar.set("Select Option")
         fbsOM = OptionMenu(mainframe, fbsVar,"FBS >= 120 mg/dl","FBS < 120 mg/dl")
         fbsOM.place(x=22.0,y=500.0,width=185.0,height=38.0)
 
         # Resting Electrocardiographic Results
-        canvas.create_text(22.0,550.0,anchor="nw",text="Resting Electrocardiographic Value",fill="#000000",font=("Manrope Bold", 14 * -1))
-        # rest_ecgImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
-        # rest_ecgBg = canvas.create_image(111.0,599.0,image=rest_ecgImage)
-        rest_ecgEntry = Entry(mainframe, bd=0,bg="#FFFFFF",highlightthickness=0)
-        rest_ecgEntry.place(x=22.0,y=586.0,width=180.0,height=23.0)
+        canvas.create_text(22.0,555.0,anchor="nw",text="Resting Electrocardiographic Value",fill="#000000",font=("Arial Bold", 14 * -1))
+        rest_ecgVar = StringVar(mainframe)
+        rest_ecgVar.set("Select Option")
+        rest_ecgOM = OptionMenu(mainframe, rest_ecgVar,"normal","ST-T wave abnormality","left ventricular hypertrophy")
+        rest_ecgOM.pack()
+        rest_ecgOM.place(x=22.0,y=586.0,width=185.0,height=38.0)
 
 
         # Maximum Heart Rate
-        canvas.create_text( 25.0, 631.0, anchor="nw", text="Maximum Heart rate", fill="#000000", font=("Manrope Bold", 14 * -1) )
-        # thalachImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
-        # thalachBg = canvas.create_image( 117.0, 665.5, image=thalachImage)
+        canvas.create_text( 25.0, 631.0, anchor="nw", text="Maximum Heart rate", fill="#000000", font=("Arial Bold", 14 * -1) )
+        thalachImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
+        thalachBg = canvas.create_image( 117.0, 665.5, image=thalachImage)
         thalachEntry = Entry(mainframe, bd=0, bg="#FFFFFF", highlightthickness=0)
         thalachEntry.place(x=27.0,y=653.0,width=180.0,height=23.0)
 
 
         # Exercise Induced Angina
-        canvas.create_text(22.0,692.0,anchor="nw",text="Exercise Induced Angina",fill="#000000",font=("Manrope Bold", 14 * -1))
+        canvas.create_text(22.0,692.0,anchor="nw",text="Exercise Induced Angina",fill="#000000",font=("Arial Bold", 14 * -1))
         exangVar = StringVar(mainframe)
         exangVar.set("Select Option")
         exangOM = OptionMenu(mainframe, exangVar,"Yes","No")
@@ -660,68 +661,71 @@ class CreateEntry(tk.Frame):
         exangOM.place(x=22.0,y=710.0,width=185.0,height=38.0)
 
         # Precious Peak
-        canvas.create_text( 28.0, 759.0, anchor="nw", text="Previous Peak", fill="#000000", font=("Manrope Bold", 14 * -1) )
-        # oldImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
-        # oldBg = canvas.create_image(117.0, 796.1, image=oldImage) 
+        canvas.create_text( 28.0, 759.0, anchor="nw", text="Previous Peak", fill="#000000", font=("Arial Bold", 14 * -1) )
+        oldImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
+        oldBg = canvas.create_image(117.0, 796.1, image=oldImage) 
         oldpeakEntry = Entry(mainframe, bd=0, bg="#FFFFFF", highlightthickness=0 ) 
         oldpeakEntry.place( x=27.0, y=783.0, width=180.0, height=23.0 )
 
-
+ 
         #Last Name
-        canvas.create_text( 284.0, 166.0, anchor="nw", text="Last name", fill="#000000", font=("Manrope Bold", 14 * -1) )
-        # gImage = PhotoImage(file=relative_to_assets("greenTextbox.png")) 
-        # lnBg = canvas.create_image(393.5, 205.0, image=gImage) 
+        canvas.create_text( 284.0, 166.0, anchor="nw", text="Last name", fill="#000000", font=("Arial Bold", 14 * -1) )
+        gImage = PhotoImage(file=relative_to_assets("greenTextbox.png")) 
+        lnBg = canvas.create_image(393.5, 205.0, image=gImage) 
         lnEntry = Entry(mainframe, bd=0, bg="#FFFFFF", highlightthickness=0) 
         lnEntry.place( x=286.0, y=194.0, width=217.0, height=23.0)
 
         # First Name
-        canvas.create_text( 284.0, 223.0, anchor="nw", text="First name", fill="#000000", font=("Manrope Bold", 14 * -1) )
-        # fnImage = canvas.create_image(393.5, 255.5, image=gImage)
+        canvas.create_text( 284.0, 223.0, anchor="nw", text="First name", fill="#000000", font=("Arial Bold", 14 * -1) )
+        fnImage = canvas.create_image(393.5, 255.5, image=gImage)
         fnEntry = Entry(mainframe, bd=0, bg="#FFFFFF", highlightthickness=0 )
         fnEntry.place(x=286.0,y=244.0,width=217.0,height=23.0)
 
 
         # Address
-        canvas.create_text( 284.0, 279.0, anchor="nw", text="Address", fill="#000000", font=("Manrope Bold", 14 * -1) )
-        # addressImage = canvas.create_image(393.5, 315.0, image=gImage)
+        canvas.create_text( 284.0, 279.0, anchor="nw", text="Address", fill="#000000", font=("Arial Bold", 14 * -1) )
+        addressImage = canvas.create_image(393.5, 315.0, image=gImage)
         addressEntry = Entry(mainframe, bd=0, bg="#FFFFFF", highlightthickness=0 )
         addressEntry.place(x=286.0,y=305.0,width=217.0,height=23.0)
 
 
         # Emergency Contact Number
-        canvas.create_text(284.0, 337.0, anchor="nw", text="Emergency Contact Number", fill="#000000", font=("Manrope Bold", 14 * -1) ) 
-        # numberImage = canvas.create_image(392.5, 370.0, image=gImage)
+        canvas.create_text(284.0, 337.0, anchor="nw", text="Emergency Contact Number", fill="#000000", font=("Arial Bold", 14 * -1) ) 
+        numberImage = canvas.create_image(392.5, 370.0, image=gImage)
         numberEntry = Entry(mainframe, bd=0, bg="#FFFFFF", highlightthickness=0 )
         numberEntry.place(x=286.0,y=358.0,width=216.0,height=23.0)
 
 
         # Number of Major Vessels
-        canvas.create_text(288.0,587.0,anchor="nw",text="Number of Major Vessels",fill="#000000",font=("Manrope Bold", 14 * -1))
-        caVar = StringVar(mainframe)
-        caVar.set("Select Option")
-        caOM = OptionMenu(mainframe, caVar,"normal","ST-T wave abnormality","left ventricular hypertrophy")
-        caOM.pack()
-        caOM.place(x=284.0,y=610.0,width=200.0,height=38.0)
+        canvas.create_text(288.0,587.0,anchor="nw",text="Number of Major Vessels",fill="#000000",font=("Arial Bold", 14 * -1))
+        caImage = PhotoImage(file=relative_to_assets("dataTextbox.png"))
+        caBg = canvas.create_image(384.0,625.0,image=caImage)
+        caEntry = Entry(bd=0,bg="#FFFFFF",highlightthickness=0)
+        caEntry.place(x=294.0,y=610.0,width=180.0,height=23.0)
 
         # Thal Rate
-        canvas.create_text( 288.0, 661.0, anchor="nw", text="Thal Rate", fill="#000000", font=("Manrope Bold", 14 * -1) )
-        # thallImage = PhotoImage( file=relative_to_assets("dataTextbox.png")) 
-        # thallBg = canvas.create_image(384.0, 702.5, image=thallImage ) 
+        canvas.create_text( 288.0, 661.0, anchor="nw", text="Thal Rate", fill="#000000", font=("Arial Bold", 14 * -1) )
+        thallImage = PhotoImage( file=relative_to_assets("dataTextbox.png")) 
+        thallBg = canvas.create_image(384.0, 702.5, image=thallImage ) 
         thallEntry = Entry(mainframe, bd=0, bg="#FFFFFF", highlightthickness=0 ) 
         thallEntry.place( x=294.0, y=690.0, width=180.0, height=23.0 )
 
         # Slope
-        canvas.create_text(286.0,530.0,anchor="nw",text="Slope",fill="#000000",font=("Manrope Bold", 14 * -1))
-        # slpImage = PhotoImage( file=relative_to_assets("dataTextbox.png")) 
-        # slpBg = canvas.create_image(384.0, 565.5, image=slpImage ) 
+        canvas.create_text(286.0,530.0,anchor="nw",text="Slope",fill="#000000",font=("Arial Bold", 14 * -1))
+        slpImage = PhotoImage( file=relative_to_assets("dataTextbox.png")) 
+        slpBg = canvas.create_image(384.0, 565.5, image=slpImage ) 
         slpEntry = Entry(mainframe, bd=0, bg="#FFFFFF", highlightthickness=0 )
         slpEntry.place( x=294.0, y=553.0, width=180.0, height=23.0 )
 
+        # Check Input
+        def showError(error):
+            messagebox.showerror('Input Error', 'Please Enter ' + error)
+            return 0
 
-        # Predict Button
+        # Predict Model
         def predictHeart():
             # Data Collection and Processing
-            HeartAttackAPdataset = pd.read_csv('Heart Attack Anlysis.csv')
+            HeartAttackAPdataset = pd.read_csv('Heart Attack Analysis.csv')
             HeartAttackAPdataset.shape
             HeartAttackAPdataset.isnull().sum()
 
@@ -746,69 +750,118 @@ class CreateEntry(tk.Frame):
 
 
             # Get Data from Textbox and Dropdown Widgets
+
             stringAge = ageEntry.get()
-            age = np.array(stringAge, dtype= int)
+            if stringAge == '':
+                showError('Age')
+            else:
+                age = np.array(stringAge, dtype= int)
 
             sexOP = sexVar.get()
-            if(sexOP == "Male"):
+            if sexOP == "Male":
                 sex = np.array(1, dtype= int)
-            else:
+            elif sexOP == "Female":
                 sex = np.array(0, dtype= int)
+            else:
+                showError('Sex')
 
             cpOP = cpVar.get()
-            if(cpOP == "typical angina"):
+            if cpOP == "typical angina":
+                cp = np.array(0, dtype= int)
+            elif cpOP == "atypical angina":
                 cp = np.array(1, dtype= int)
-            elif(cpOP == "atypical angina"):
+            elif cpOP == "non-anginal pain":
                 cp = np.array(2, dtype= int)
-            elif(cpOP == "atypical angina"):
-                cp = np.array(3, dtype= int)
+            elif cpOP == "asymptomatic":
+                cp = np.array(3, dtype= int)   
             else:
-                cp = np.array(4, dtype= int)
+                showError('Chest Pain Type')
 
             stringTrtbps = trtbpsEntry.get()
-            trtbps = np.array(stringTrtbps, dtype= int)
+            if stringTrtbps == '':
+                showError('Resting Blood Pressure')
+            else:
+                trtbps = np.array(stringTrtbps, dtype= int)
 
             stringChol = cholEntry.get()
-            chol = np.array(stringChol, dtype= int)
+            if stringChol == '':
+                showError('Cholesterol in mg/dl')
+            else:
+                chol = np.array(stringChol, dtype= int)
 
             fbsOP = fbsVar.get()
-            if(fbsOP == "FBS >= 120 mg/dl"):
+            if fbsOP == "FBS >= 120 mg/dl":
                 fbs = np.array(1, dtype= int)
+            elif fbsOP == "FBS < 120 mg/dl":
+                fbs = np.array(0, dtype= int)
             else:
-                fbs = np.array(2, dtype= int)
+                showError('Fasting Blood Sugar')
 
-            stringRest_ecg = rest_ecgEntry.get()
-            rest_ecg = np.array(stringRest_ecg, dtype= int)
-
+            rest_ecgOP = rest_ecgVar.get()
+            if rest_ecgOP == "normal":
+                rest_ecg = np.array(0, dtype= int)
+            elif rest_ecgOP == "ST-T wave abnormality":
+                rest_ecg = np.array(1, dtype= int)
+            elif rest_ecgOP == "left ventricular hypertrophy":
+                rest_ecg = np.array(2, dtype= int)
+            else:
+                showError('Resting Electrocardiographic Value')
             
             stringThalach = thalachEntry.get()
-            thalach = np.array(stringThalach, dtype= int)
+            if stringThalach == '':
+                showError('Maximum Heart Rate')
+            else:
+                thalach = np.array(stringThalach, dtype= int)
 
             exangOP = exangVar.get()
-            if(exangOP == "Yes"):
+            if exangOP == "Yes":
                 exang = np.array(1, dtype= int)
-            else:
+            elif exangOP == "No":
                 exang = np.array(0, dtype= int)
+            else:
+                showError('Exercise Induced Angina')
 
             stringOldpeak = oldpeakEntry.get()
-            oldpeak = np.array(stringOldpeak, dtype= float)
+            if stringOldpeak == '':
+                showError('Previous Peak')
+            else:
+                oldpeak = np.array(stringOldpeak, dtype= float)
 
             stringSlp = slpEntry.get()
-            slp = np.array(stringSlp, dtype= float)
-
-            caOP = caVar.get()
-            if(caOP == "normal"):
-                ca = np.array(0, dtype= int)
-            elif(caOP == "ST-T wave abnormality"):
-                ca = np.array(1, dtype= int)
+            if stringSlp == '':
+                showError('Slope')
             else:
-                ca = np.array(2, dtype= int)
+                slp = np.array(stringSlp, dtype= float)
+
+            stringCa = caEntry.get() ###
+            if stringCa == '':
+                showError('Number of Major Vessels')
+            else:
+                ca = np.array(stringCa, dtype= int)
 
             stringThall = thallEntry.get()
-            thall = np.array(stringThall, dtype= float)
+            if stringThall == '':
+                showError('Thal Rate')
+            else:
+                thall = np.array(stringThall, dtype= float)
+
+            # Personal Information
+            fn = fnEntry.get()
+            if fn == '':
+                showError('First Name')
+            ln = lnEntry.get()
+            if ln == '':
+                showError('Last Name')
+            address = addressEntry.get()
+            if address == '':
+                showError('Addres')
+            number = numberEntry.get()
+            if number == '':
+                showError('Number')
 
             # Create input data list
             inputData = (age,sex,cp,trtbps,chol,fbs,rest_ecg,thalach,exang,oldpeak,slp,ca,thall)
+            print(inputData)
 
             # Change the input data to a numpy array
             dataToArray= np.asarray(inputData)
@@ -819,28 +872,24 @@ class CreateEntry(tk.Frame):
             prediction = model.predict(inputDataReshaped)
             print(prediction)
 
-            if (prediction[0]== 0):
-                canvas.create_text( 549.0, 327.0, anchor="nw", text="The The Person does not \nhave a Heart Disease", fill="#FFFFFF", font=("Manrope Bold", 14 * -1) )
+            # Display Output
+            if prediction[0]== 0:
                 output = "No"
-            else:
-                canvas.create_text( 549.0, 327.0, anchor="nw", text="The Person has \nHeart Disease", fill="#FFFFFF", font=("Manrope Bold", 14 * -1) )
-                output = "Yes"
-        
-            fn = fnEntry.get()
-            Label(canvas, text=fn, fg = "#FFFFFF", bg = "#3A4132", font=("Manrope Bold", 14 * -1)).place(x=580.0, y=410.0)
-            ln = lnEntry.get()
-            Label(canvas, text=ln, fg = "#FFFFFF", bg = "#3A4132", font=("Manrope Bold", 14 * -1)).place(x=580.0, y=445.0)
-            address = addressEntry.get()
-            Label(canvas, text=address, fg = "#FFFFFF", bg = "#3A4132", font=("Manrope Bold", 14 * -1)).place(x=580.0, y=485.0)
-            number = numberEntry.get()
-            Label(canvas, text=number, fg = "#FFFFFF", bg = "#3A4132", font=("Manrope Bold", 14 * -1)).place(x=580.0, y=525.0)
-            Label(canvas, text=output, fg = "#FFFFFF", bg = "#3A4132", font=("Manrope Bold", 14 * -1)).place(x=580.0, y=560.0)
-            if(output=="Yes"):
-                Label(canvas, text="Please Contact/\nConsult your Doctor", fg = "#FFFFFF", bg = "#3A4132", font=("Manrope Bold", 14 * -1)).place(x=580.0, y=620.0)
-            else:
-                Label(canvas, text="Continue Having\na Healthy Life", fg = "#FFFFFF", bg = "#3A4132", font=("Manrope Bold", 14 * -1)).place(x=580.0, y=620.0)
+                outputResult1 = "The The Person does not \nhave a Heart Disease"
+                outputResult2 = "Continue Having\na Healthy Life"
 
-            Label(canvas, text="Dataset:\nHeart Attack Analysis &\nPrediction Dataset\n By: RASHIK RAHMAN", fg = "#FFFFFF", bg = "#3A4132", font=("Manrope Bold", 14 * -1)).place(x=565.0, y=720.0)
+            else:
+                output = "Yes"
+                outputResult1 = "The Person has \nHeart Disease"
+                outputResult2 = "Please Contact/\nConsult your Doctor"
+
+            Label(canvas, text= outputResult1, fg = "#FFFFFF", bg = "#3A4132", font=("Arial Bold", 14 * -1)).place(x=570.0, y=327.0)
+            Label(canvas, text=outputResult2, fg = "#FFFFFF", bg = "#3A4132", font=("Arial Bold", 14 * -1)).place(x=580.0, y=630.0)
+            Label(canvas, text=fn, fg = "#FFFFFF", bg = "#3A4132", font=("Arial Bold", 14 * -1)).place(x=580.0, y=408.0)
+            Label(canvas, text=ln, fg = "#FFFFFF", bg = "#3A4132", font=("Arial Bold", 14 * -1)).place(x=580.0, y=454.0)
+            Label(canvas, text=address, fg = "#FFFFFF", bg = "#3A4132", font=("Arial Bold", 14 * -1)).place(x=580.0, y=502.0)
+            Label(canvas, text=number, fg = "#FFFFFF", bg = "#3A4132", font=("Arial Bold", 14 * -1)).place(x=580.0, y=549.0)
+            Label(canvas, text=output, fg = "#FFFFFF", bg = "#3A4132", font=("Arial Bold", 14 * -1)).place(x=580.0, y=596.0)
 
             lastname = lnEntry.get()
             firstname = fnEntry.get()
@@ -867,7 +916,7 @@ class CreateEntry(tk.Frame):
         backButton = Button(mainframe, image=backImage, borderwidth=0, highlightthickness=0, command=back2mainmenu, relief="flat" ) 
         backButton.image = backImage
         backButton.place(x=12.0, y=12.0)
-        ## command for back ---------------------------------------------------------------------------------------------------------------------------------
+        
         canvas.pack()
         mainframe.grid()
 
