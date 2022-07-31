@@ -405,6 +405,7 @@ class ViewList(tk.Frame):
 
         # button to show frame 2 with text
         # layout2
+
         data = prediction_List.entry_CheckList(db)
         numid = 1
         for record in data:
@@ -491,7 +492,11 @@ class ViewList(tk.Frame):
 
         def back2mainmenu():
             self.grid_remove()
+            refresh()
             controller.show_frame(MainMenu)
+
+        def refresh_record():
+            refresh()
 
         # Add Buttons
         button_frame = LabelFrame(ButtonFrame, text="Commands", bg="#818964")
@@ -530,13 +535,23 @@ class ViewList(tk.Frame):
         self.edit_btn.image = edit_btn_img
         self.edit_btn.grid(row = 0, column = 2, padx=10, pady=10)
 
+        img5 = Image.open("images/Refresh_btn.png")
+        resized5 = img5.resize((100,45), Image.ANTIALIAS)
+        Refresh_btn_img = ImageTk.PhotoImage(resized5)
+        self.Refresh_btn = Button(button_frame,
+            image=Refresh_btn_img,
+            command=refresh_record,
+            bd=0
+        )
+        self.Refresh_btn.image = Refresh_btn_img
+        self.Refresh_btn.grid(row = 0, column = 3, padx=10, pady=10)
+
         img1 = Image.open("images/imgdesign5.png")
         resized1 = img1.resize((20,20), Image.ANTIALIAS)
         imgbackbutton_design = ImageTk.PhotoImage(resized1)
         self.back_button = Button(TitleFrame, font=("Tahoma", 12), width=75, anchor=CENTER, image=imgbackbutton_design, text='Back', compound=tk.LEFT, command=back2mainmenu, bg="#818066")
         self.back_button.image = imgbackbutton_design
         self.back_button.place(x=20, y=10)
-
 
 class CreateEntry(tk.Frame):
     def __init__(self, parent, controller):
@@ -832,7 +847,7 @@ class CreateEntry(tk.Frame):
             address = addressEntry.get()
             number = numberEntry.get()
 
-            prediction_List.entry_Create(firstname, lastname, address, number, db, conn)
+            prediction_List.entry_Create(firstname, lastname, output, address, number, db, conn)
 
         def back2mainmenu():
             self.grid_remove()
