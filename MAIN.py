@@ -586,8 +586,10 @@ class CreateEntry(tk.Frame):
 
 
         # Image
-        heart1Image = PhotoImage(file="images/heart1.png")
-        heart1 = canvas.create_image(638.0,240.0,image=heart1Image)
+        img3 = Image.open("images/assets/heart1.png")
+        resized3 = img3.resize((600, 410), Image.ANTIALIAS)
+        self.heart1Image = ImageTk.PhotoImage(resized3)
+        canvas.create_image(638.0,240.0,image=self.heart1Image)
 
         # Age
         canvas.create_text(22.0,164.0,anchor="nw",text="Age",fill="#000000",font=("Arial Bold", 14 * -1))
