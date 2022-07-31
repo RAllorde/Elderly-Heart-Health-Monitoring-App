@@ -561,7 +561,7 @@ class CreateEntry(tk.Frame):
         mainframe.grid()
 
         OUTPUT_PATH = Path(__file__).parent
-        ASSETS_PATH = OUTPUT_PATH / Path("./assets")
+        ASSETS_PATH = OUTPUT_PATH / Path("./images/assets")
 
 
         def relative_to_assets(path: str) -> Path:
@@ -853,7 +853,7 @@ class CreateEntry(tk.Frame):
             self.grid_remove()
             controller.show_frame(MainMenu)
 
-        img1 = Image.open("assets/button_1.png")
+        img1 = Image.open("images/assets/button_1.png")
         resized1 = img1.resize((188, 35), Image.ANTIALIAS)
         predictImage = ImageTk.PhotoImage(resized1)
         predictButt = Button(mainframe, image=predictImage, borderwidth=0, highlightthickness=0, command=predictHeart, relief="flat")
@@ -861,7 +861,7 @@ class CreateEntry(tk.Frame):
         predictButt.place(x=286.0, y=774.0)
 
         # Back Button
-        img2 = Image.open("assets/button_2.png")
+        img2 = Image.open("images/assets/button_2.png")
         resized2 = img2.resize((80, 24), Image.ANTIALIAS)
         backImage = ImageTk.PhotoImage(resized2)
         backButton = Button(mainframe, image=backImage, borderwidth=0, highlightthickness=0, command=back2mainmenu, relief="flat" ) 
