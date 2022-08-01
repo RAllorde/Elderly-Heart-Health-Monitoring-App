@@ -877,7 +877,7 @@ class CreateEntry(tk.Frame):
             # Display Output
             if prediction[0]== 0:
                 output = "No"
-                outputResult1 = "The The Person does not \nhave a Heart Disease"
+                outputResult1 = "The Person does not \nhave a Heart Disease"
                 outputResult2 = "Continue Having\na Healthy Life"
 
             else:
@@ -898,7 +898,7 @@ class CreateEntry(tk.Frame):
             address = addressEntry.get()
             number = numberEntry.get()
 
-            prediction_List.entry_Create(firstname, lastname, output, address, number, db, conn)
+            prediction_List.entry_Create(firstname, lastname, address, number, output, db, conn)
 
         def back2mainmenu():
             self.grid_remove()
