@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from types import NoneType
 
 def entry_Create(first_Name, last_Name, address, contact_Num, prediction, db, conn):
@@ -7,8 +8,8 @@ def entry_Create(first_Name, last_Name, address, contact_Num, prediction, db, co
 
     if (type(db.fetchone()) == NoneType):
         log_Message = "New entry created"
-        db.execute("INSERT INTO PREDICTION(FirstName, LastName, Address, ContactNum, Prediction) VALUES (:first_Name, :last_Name, :address, :prediction, :contact_Num)", 
-            {'first_Name': first_Name, "last_Name": last_Name, "address": address, "prediction": prediction, "contact_Num": contact_Num})
+        db.execute("INSERT INTO PREDICTION(FirstName, LastName, Address, ContactNum, Prediction) VALUES (:first_Name, :last_Name, :address, :contact_Num, :prediction)", 
+            {'first_Name': first_Name, "last_Name": last_Name, "address": address, "contact_Num": contact_Num, "prediction": prediction,})
         conn.commit()
     
     else:
